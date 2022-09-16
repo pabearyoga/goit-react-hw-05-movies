@@ -1,13 +1,17 @@
 import PropTypes from 'prop-types';
+import css from "./Statistics.module.css";
 
 export default function Statisticks({ good, neutral, bad, total, positivePercentage }) {
-    return (
-        <div>
-            <p>Good: {good}</p>
-            <p>Neutral: {neutral}</p>
-            <p>Bad: {bad}</p>
-            <p>Total: {total}</p>
-            <p>Positive feedback: {positivePercentage}%</p>
+  return (
+    
+      <div className={css.statistics}>
+        <p className={`${css.statisticsItem} ${css.good}`}>Good: {good}</p>
+        <p className={`${css.statisticsItem} ${css.neutral}`}>Neutral: {neutral}</p>
+        <p className={`${css.statisticsItem} ${css.bad}`}>Bad: {bad}</p>
+        <p className={`${css.statisticsItem} ${css.total}`}>Total: {total}</p>
+        <span className={css.positiveFeedbackWrapper}>
+          <p  className={`${css.statisticsItem} ${css.positiveFeedback}`}>Positive feedback: {positivePercentage}%</p>
+        </span>
         </div>
         )  
 }
@@ -19,3 +23,4 @@ Statisticks.propTypes = {
   total: PropTypes.number.isRequired,
   positivePercentage: PropTypes.number.isRequired,
 };
+
