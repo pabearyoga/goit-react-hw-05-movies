@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Statisticks from "./Statistics/Statistics";
+import Statistics from "./Statistics/Statistics";
 import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
 import Section from "./Section/Section";
 import Notification from "./Notification/Notification";
@@ -43,7 +43,7 @@ class App extends Component {
 
         <Section title="Statistick">
           {this.countTotalFeedback() > 0 ? (
-            <Statisticks
+            <Statistics
               good={this.state.good}
               neutral={this.state.neutral}
               bad={this.state.bad}
