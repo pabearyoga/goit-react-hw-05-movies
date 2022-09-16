@@ -6,6 +6,7 @@ export default function Section({ title, children }) {
    <section className={css.feedbackSection}>
      <h2 className={css.feedbackSectionTitle}>{title}</h2>
      <div className={css.feedbackSectionWrapper}>
+       <h3>HAHA</h3>
        {children}
      </div>
     </section>
