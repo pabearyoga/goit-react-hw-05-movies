@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import css from './FeedbackOptions.module.css'
-import bgcFilter from 'components/Utilit/BgcBnt';
+import bgcFilter from 'components/Util/bgcBnt';
 
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
