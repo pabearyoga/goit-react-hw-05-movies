@@ -1,5 +1,5 @@
 import axios from 'axios';
-export const IMAGE_URL = 'https://image.tmdb.org/t/p/';
+export const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
 const getMovies = async ({ pathName, param={} }) => {
   axios.defaults.baseURL = 'https://api.themoviedb.org/3';

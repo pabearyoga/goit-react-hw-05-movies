@@ -1,50 +1,60 @@
-import { useParams, Outlet, NavLink } from "react-router-dom"
+import { useParams, Outlet, NavLink, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react"
- import {getMovieById} from "servises/MovieAPI"
+import {getMovieDetailsById} from "servises/MovieAPI"
+import { IMAGE_URL } from "servises/MovieAPI";
+import { toast } from 'react-toastify';
+import placeholderIMG from 'images/placeholder.png'
 
 const imageUrl = (poster) => {
-    return `https://image.tmdb.org/t/p/w500${poster}`
+    return `${IMAGE_URL}${poster}`
 }
 
 const MovieDetails = () => {
+    const ROUTE_HOME_PAGE = process.env.REACT_APP_ROUTE_HOME_PAGE;
+    const { state } = useLocation();
     const { movieId } = useParams();
-    const [movie, setMovie] = useState({genres: [{id:1, name:1}]})
+    const [movie, setMovie] = useState({})
+    const [isLoading, setIsLoading] = useState(false);
  
-    useEffect(() => {
-        getMovieById(movieId).then(response => {
-            setMovie( response )
-        })
-        return
-    }, [movieId]);      
+  useEffect(() => {
+    movieId && setIsLoading(true);
 
-    const { poster_path, original_title, title, overview } = movie;
+    getMovieDetailsById(movieId)
+      .then(results => {
+        setMovie(results);
+      })
+      .catch(err => toast.error(err))
+      .finally(setIsLoading(false));
+  }, [movieId]);     
+
+    const { poster_path, original_title, title, overview, genres } = movie;
     return <div>
+        {isLoading && <p>Loading...</p>}
         {!movie?.length && (
             <>
-                <img src={imageUrl(poster_path)} alt={title} />
-        <div>
-            <h1>{original_title}</h1>
-            <h2>Overview</h2>
-            <p>{overview}</p>
-            <h3>Genres</h3>
-            <ul>
-                {movie.genres.map((x) => (
-                    <li key={x.id}>{x.name}</li>
-                ))}
-            </ul>
-        </div>
-        <div>
-            <p>Additional information</p>
-            <ul>
-                <li>
-                    <NavLink to="cast">Cast</NavLink>
-                </li>
-                <li>
-                    <NavLink to="reviews">Reviews</NavLink>
-                </li>
-            </ul>
+                <NavLink to={state || `/${ROUTE_HOME_PAGE}`}>Go back</NavLink>
+                {poster_path ? (<img src={imageUrl(poster_path)} alt={title} />) : (
+                <img src={placeholderIMG} alt={title} />
+              )}
+                <div>
+                    <h1>{original_title}</h1>
+                    <h2>Overview</h2>
+                    <p>{overview || '-'}</p>
+                    <h3>Genres</h3>
+                    <p>{genres?.map(genre => genre.name).join(', ') || '-'}</p>
                 </div>
-                </>
+                <div>
+                    <h3>Additional information</h3>
+                    <ul>
+                        <li>
+                            <NavLink to="cast" state={state}>Cast</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="reviews" state={state}>Reviews</NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </>
 )}
 
         <Outlet />
