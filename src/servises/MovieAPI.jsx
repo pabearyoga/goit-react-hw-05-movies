@@ -5,7 +5,7 @@ const getMovies = async ({ pathName, param={} }) => {
   axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
   const searchParam = new URLSearchParams({
-  api_key: '739ddb8e241607cc9ff00a57b23f5e54',
+  api_key: '8981d06a4174dd7b5006af470bdeff3a',
   ...param
   });
   return axios
