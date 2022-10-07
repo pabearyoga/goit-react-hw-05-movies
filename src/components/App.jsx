@@ -5,11 +5,13 @@ import MovieDetails from "./MovieDetails/MovieDetails"
 import Cast from "./Cats/Cast";
 import Reviews from "./Reviews/Reviews"
 import NotFound from "./NotFound/NotFound";
-import  {SharedLayout}  from "./SharedLayout/SharedLayout";
+import { SharedLayout } from "./SharedLayout/SharedLayout";
+
 
 
 
 const App = () => {
+
   return (
     <>
       <Routes>
