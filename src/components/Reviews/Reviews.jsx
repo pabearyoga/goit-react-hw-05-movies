@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import {getMovieReviewsById} from "servises/MovieAPI"
+import css from './Reviews.module.css'
 
 const Reviews = () => {
     const { movieId } = useParams();
@@ -19,28 +20,28 @@ const Reviews = () => {
     }, [movieId]);
 
     return (
-        <div>
+        <div className={css.ReviewsWrapper}>
             {isLoading && <p>Loading...</p>}
    
             {!!reviews?.length ? (
                 reviews.map(({ id, author, content, created_at, updated_at }) => (
-                    <div key={id}>
+                    <div  key={id}>
                         <h4>Author: {author}</h4>
-                        <div>
-                            <p>
+                        <div className={css.ReviewsDate}>
+                            <p className={css.ReviewsDateItem}>
                                 Created: {created_at.slice(0, 10).toLocaleString()}
                             </p>
                             {updated_at && (
-                                <p>
+                                <p className={css.ReviewsDateItem}>
                                     Updated: {updated_at.slice(0, 10).toLocaleString()}
                                 </p>
                             )}
                         </div>
-                        <p>{content}</p>
+                        <p className={css.ReviewsContent}>{content}</p>
                     </div>
                 ))
             ) : (
-                <p>No Reviews</p>
+                <p className={css.NoReviews}>No Reviews...</p>
             )}
      </div>
      )

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { getMovieCastById, IMAGE_URL } from "servises/MovieAPI"
 import unknown_personIMG from 'images/unknown_person.png'
+import css from './Cast.module.css'
 
 const imageUrl = (poster) => {
     return `${IMAGE_URL}${poster}`
@@ -24,7 +25,7 @@ const Cast = () => {
             .finally(setIsLoading(false));
     }, [movieId]);
 
-    return (<ul>
+    return (<ul className={css.CastList}>
         {isLoading && <p>Loading...</p>}
         {!!cast?.cast?.length && cast?.cast.map(
             ({
@@ -34,13 +35,13 @@ const Cast = () => {
                 known_for_department,
                 character,
             }) => (
-                <li key={cast_id}>
+                <li className={css.CastItem} key={cast_id}>
                     {profile_path ? (<img src={imageUrl(profile_path)} alt={name} />)
                         : (<img src={unknown_personIMG} alt={name} />)}
-                    <div>
-                        <p>{name || '-'}</p>
-                        <p>Character: {character || '-'}</p>
-                        <p>{known_for_department || '-'}</p>
+                    <div className={css.CastInfo}>
+                        <p className={`${css.CastText} ${css.CastTitle}`}>{name || '-'}</p>
+                        <p className={`${css.CastText} ${css.CastSubTitle}`}>Character: {character || '-'}</p>
+                        <p className={css.CastText}>{known_for_department || '-'}</p>
                     </div>
                 </li>)
         )}
