@@ -1,0 +1,19 @@
+.MovieItemTitleWrapper {
+  text-align: center;
+  padding: 20px;
+}
+
+.MovieItemTitle {
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.MovieItemLink:hover .MovieItemTitleWrapper {
+  background-color: #4169e1;
+  border-radius: 50px;
+}
+
+.MovieItemLink:hover .MovieItemTitle {
+  color: #fff;
+}

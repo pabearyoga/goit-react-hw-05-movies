@@ -1,0 +1,22 @@
+.MovieSearchList {
+  grid-gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  list-style: none;
+  margin: 30px auto;
+
+  max-width: calc(100vw - 48px);
+  padding: 0;
+}
+
+.MovieSearchItem {
+  border-radius: 2px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
+    0 2px 1px -1px rgb(0 0 0 / 12%);
+  cursor: pointer;
+}
+
+.MovieSearchItem:hover {
+  transform: scale(1.03);
+  border-radius: 50px;
+}
