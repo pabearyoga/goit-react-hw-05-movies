@@ -12,11 +12,11 @@
 
 .Navigation {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 32px 24px;
 }
 
-.Logo {
+.Home {
   padding: 5px 10px;
   color: #4169e1;
   text-transform: uppercase;

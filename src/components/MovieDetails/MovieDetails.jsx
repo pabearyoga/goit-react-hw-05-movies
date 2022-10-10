@@ -49,10 +49,10 @@ const MovieDetails = () => {
                 <div className={css.AdditionalInformationWrapper}>
                     <ul className={css.AdditionalInformationList}>
                         <li className={css.MovieSubTitle}>
-                            <NavLink className={css.AdditionalInformationLink} to="cast" state={state}>Cast</NavLink>
+                            <NavLink className={({ isActive }) => (isActive ? `${css.active}` : `${css.AdditionalInformationLink}`)} to="cast" state={state}>Cast</NavLink>
                         </li>
                         <li className={css.MovieSubTitle}>
-                            <NavLink className={css.AdditionalInformationLink} to="reviews" state={state}>Reviews</NavLink>
+                            <NavLink className={({ isActive }) => (isActive ? `${css.active}` : `${css.AdditionalInformationLink}`)} to="reviews" state={state}>Reviews</NavLink>
                         </li>
                     </ul>
                 </div>

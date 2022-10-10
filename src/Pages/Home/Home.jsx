@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { IMAGE_URL } from "servises/MovieAPI";
 
 import css from "./Home.module.css"
+
 const imageUrl = (poster) => {
     return `${IMAGE_URL}${poster}`
 }
