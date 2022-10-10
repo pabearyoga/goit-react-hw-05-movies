@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify';
 
 import {getTrendingMovies} from "servises/MovieAPI"
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IMAGE_URL } from "servises/MovieAPI";
 
 import css from "./Home.module.css"
@@ -35,7 +35,7 @@ const Home = () => {
                     <ul className={css.TrendingMovieList}>
                         {trendingMovies.map(trendingMovie => (
                             <li className={css.TrendingMovieItem} key={trendingMovie.id} >
-                                <NavLink to={`movies/${trendingMovie.id}`} ><img src={imageUrl(trendingMovie.poster_path)} alt={trendingMovie.title} /></NavLink>
+                                <Link to={`movies/${trendingMovie.id}`} ><img src={imageUrl(trendingMovie.poster_path)} alt={trendingMovie.title} /></Link>
                                 <div className={css.TitleWrapper}>
                                     <p className={css.TrendingMovieItemTitle}>{trendingMovie.title}</p>
                                 </div>
