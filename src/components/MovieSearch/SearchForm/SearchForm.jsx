@@ -5,12 +5,12 @@ import css from "./SearchForm.module.css"
 const SearchForm = ({ value, onChange, onFormSubmit }) => {
   const onSubmitHandle = e => {
     e.preventDefault();
-    const query = e.target.elements.searchQuery.value;
+  
     
-    if (query.trim() === '') {
+    if (value.trim() === '') {
       toast.warning('Enter search query!');
     }
-    onFormSubmit(query);
+    onFormSubmit(value);
   };
 
   return (
