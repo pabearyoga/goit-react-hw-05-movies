@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { getMovieCastById, IMAGE_URL } from "servises/MovieAPI"
 import unknown_personIMG from 'images/unknown_person.png'
 import css from './Cast.module.css'
+import { Loader } from "components/Loader/Loader"
 
 const imageUrl = (poster) => {
     return `${IMAGE_URL}${poster}`
@@ -26,7 +27,7 @@ const Cast = () => {
     }, [movieId]);
 
     return (<ul className={css.CastList}>
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <Loader/>}
         {!!cast?.cast?.length && cast?.cast.map(
             ({
                 cast_id,

@@ -9,11 +9,12 @@ const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
 const Cast = lazy(() => import('./Cats/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
 const MoviesSearch = lazy(() => import('./MovieSearch/MovieSearch'));
+const Loader = lazy(() => import('./Loader/Loader'));
 
 const App = () => {
 
   return (
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<Loader/>}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<Home />} />

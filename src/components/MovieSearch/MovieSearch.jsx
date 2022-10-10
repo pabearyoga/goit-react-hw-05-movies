@@ -9,6 +9,8 @@ import { getMoviesBySearchQuery } from '../../servises/MovieAPI';
 
 import css from './MovieSearch.module.css'
 
+import { Loader } from 'components/Loader/Loader';
+
 const MoviesSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
@@ -45,7 +47,7 @@ const MoviesSearch = () => {
         onChange={onChangeQuery}
         onFormSubmit={onFormSubmit}
       />
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loader/>}
       {!!movies?.length && !isLoading && (
         <>
           <ul className={css.MovieSearchList}>

@@ -7,6 +7,8 @@ import { IMAGE_URL } from "servises/MovieAPI";
 
 import css from "./Home.module.css"
 
+import { Loader } from 'components/Loader/Loader';
+
 const imageUrl = (poster) => {
     return `${IMAGE_URL}${poster}`
 }
@@ -28,7 +30,7 @@ const Home = () => {
     }, []);
 
 
-    return isLoading ? (<p>Loading...</p>) :
+    return isLoading ? (<Loader/>) :
         (
             <main>
                 <div>

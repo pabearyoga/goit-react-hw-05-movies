@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import {getMovieReviewsById} from "servises/MovieAPI"
 import css from './Reviews.module.css'
+import { Loader } from "components/Loader/Loader"
 
 const Reviews = () => {
     const { movieId } = useParams();
@@ -21,7 +22,7 @@ const Reviews = () => {
 
     return (
         <div className={css.ReviewsWrapper}>
-            {isLoading && <p>Loading...</p>}
+            {isLoading && <Loader/>}
    
             {!!reviews?.length ? (
                 reviews.map(({ id, author, content, created_at, updated_at }) => (

@@ -5,6 +5,8 @@ import { IMAGE_URL } from "servises/MovieAPI";
 import { toast } from 'react-toastify';
 import placeholderIMG from 'images/placeholder.jpeg'
 import css from './MovieDetails.module.css'
+import { Loader } from "components/Loader/Loader"
+
 
 const imageUrl = (poster) => {
     return `${IMAGE_URL}${poster}`
@@ -30,7 +32,7 @@ const MovieDetails = () => {
 
     const { poster_path, original_title, title, overview, genres } = movie;
     return <div>
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <Loader/>}
         {!movie?.length && (
             <div className={css.MovieContainer}>
                 <NavLink className={css.GoBackBtn} to={state || `/${ROUTE_HOME_PAGE}`}>Go back</NavLink>
@@ -59,7 +61,7 @@ const MovieDetails = () => {
             </div>
 )}
 
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Loader/>}>
           <Outlet />
         </Suspense>
     </div>
